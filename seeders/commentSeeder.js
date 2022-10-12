@@ -11,7 +11,7 @@ module.exports = async () => {
       content: faker.lorem.paragraphs(),
       userId: faker.datatype.number({
         min: 1,
-        max: 3,
+        max: 4,
       }),
       articleId: faker.datatype.number({
         min: 1,

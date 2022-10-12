@@ -34,6 +34,7 @@ async function store(req, res) {
       userId: user.id,
       img: files.image.newFilename,
     });
+    paranoid = true;
 
     res.redirect("/admin");
   });
@@ -41,7 +42,7 @@ async function store(req, res) {
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {
-  const article = await Article.update(
+  await Article.update(
     { title: req.body.modificarTitulo, content: req.body.modificarContenido },
     { where: { id: req.params.id } },
   );
@@ -53,7 +54,7 @@ async function update(req, res) {}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  const article = await Article.destroy({ where: { id: req.params.id } });
+  await Article.destroy({ where: { id: req.params.id } });
   res.redirect("/admin");
 }
 

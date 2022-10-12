@@ -3,6 +3,7 @@ const passport = require("passport");
 const publicRouter = express.Router();
 const pagesController = require("../controllers/pagesController");
 const commentController = require("../controllers/commentController");
+//const apiController = require("../controllers/apiController");
 
 publicRouter.get("/", pagesController.showHome);
 
@@ -24,7 +25,5 @@ publicRouter.get("/logout", pagesController.logOut);
 publicRouter.get("/articles/:id", pagesController.showArticulo);
 
 publicRouter.post("/articles/:articleId/comments", commentController.store);
-
-publicRouter.get("/api/articulos", pagesController.showArticles);
 
 module.exports = publicRouter;

@@ -14,15 +14,13 @@ function showRegister(req, res) {
 }
 
 async function postRegister(req, res) {
-  const passwordParaHashear = req.body.password;
-  const passwordHasheado = await bcrypt.hash(passwordParaHashear, 10);
   const [user, created] = await User.findOrCreate({
     where: { email: req.body.email },
     defaults: {
       firstname: req.body.firstName,
       lastname: req.body.lastName,
       email: req.body.email,
-      password: passwordHasheado,
+      password: req.body.password,
     },
   });
   if (created) {
@@ -76,10 +74,6 @@ async function showComentar(req, res) {
   res.render("addComment", { article });
 }
 
-async function showArticles(req, res) {
-  const articles = await Article.findAll();
-  res.json(articles);
-}
 // Otros handlers...
 // ...
 
@@ -90,7 +84,6 @@ module.exports = {
   showModificar,
   showArticulo,
   showComentar,
-  showArticles,
   showLogin,
   showRegister,
   postRegister,

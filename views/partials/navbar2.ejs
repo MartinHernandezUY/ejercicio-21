@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark bg-dark h-30">
+  <div class="container-fluid justify-content-around">
+    <a class="navbar-brand" href="/">Hack the Blog</a>
+    <div>
+      <% if (user) { %>
+      <h5 id="userlogin" class="d-inline me-3">User: <%- user.firstname + " " + user.lastname%></h5>
+      <a class="btn btn-primary" href="/admin">Admin</a>
+      <a class="btn btn-danger" href="/logout">Log out</a>
+      <% } else{ %>
+      <a class="btn btn-success" href="/login">Log in</a>
+      <a class="btn btn-warning" href="/register">Register</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

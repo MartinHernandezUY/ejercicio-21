@@ -1,6 +1,6 @@
 function ensureAuthenticated(req, res, next) {
   console.log("Ok");
-  if (req.isAuthenticated()) {
+  if (req.user) {
     return next();
   } else {
     req.session.redirectTo = req.query.redirectTo;

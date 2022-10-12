@@ -7,7 +7,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const dbInitialSetup = require("./dbInitialSetup");
 const { User } = require("./models/index");
-const bcrypt = require("bcryptjs");
 
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
@@ -34,7 +33,7 @@ passport.use(
     // let user;
     // try {
     const user = await User.findOne({ where: { email: username } });
-    console.log(user.email);
+
     // } catch (error) {
     //   // 2. Hubo algun error al hacerlo? Retornemos ese error
     //   return done(error);
